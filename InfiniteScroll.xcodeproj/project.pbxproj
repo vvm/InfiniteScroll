@@ -1,0 +1,280 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D4DC0D6A148E044E0053E973 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D69148E044E0053E973 /* UIKit.framework */; };
+		D4DC0D6C148E044E0053E973 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D6B148E044E0053E973 /* Foundation.framework */; };
+		D4DC0D6E148E044E0053E973 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D6D148E044E0053E973 /* CoreGraphics.framework */; };
+		D4DC0D74148E044E0053E973 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4DC0D72148E044E0053E973 /* InfoPlist.strings */; };
+		D4DC0D76148E044E0053E973 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC0D75148E044E0053E973 /* main.m */; };
+		D4DC0D7A148E044E0053E973 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC0D79148E044E0053E973 /* AppDelegate.m */; };
+		D4DC0D7D148E044E0053E973 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4DC0D7B148E044E0053E973 /* MainStoryboard.storyboard */; };
+		D4DC0D80148E044E0053E973 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC0D7F148E044E0053E973 /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D4DC0D65148E044E0053E973 /* InfiniteScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4DC0D69148E044E0053E973 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D4DC0D6B148E044E0053E973 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D4DC0D6D148E044E0053E973 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D4DC0D71148E044E0053E973 /* InfiniteScroll-Info.plist */ = {isa = PBXFileReference; path = "InfiniteScroll-Info.plist"; sourceTree = "<group>"; };
+		D4DC0D73148E044E0053E973 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D4DC0D75148E044E0053E973 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D4DC0D77148E044E0053E973 /* InfiniteScroll-Prefix.pch */ = {isa = PBXFileReference; path = "InfiniteScroll-Prefix.pch"; sourceTree = "<group>"; };
+		D4DC0D78148E044E0053E973 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		D4DC0D79148E044E0053E973 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D4DC0D7C148E044E0053E973 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		D4DC0D7E148E044E0053E973 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		D4DC0D7F148E044E0053E973 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D4DC0D62148E044E0053E973 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4DC0D6A148E044E0053E973 /* UIKit.framework in Frameworks */,
+				D4DC0D6C148E044E0053E973 /* Foundation.framework in Frameworks */,
+				D4DC0D6E148E044E0053E973 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D4DC0D5A148E044E0053E973 = {
+			isa = PBXGroup;
+			children = (
+				D4DC0D6F148E044E0053E973 /* InfiniteScroll */,
+				D4DC0D68148E044E0053E973 /* Frameworks */,
+				D4DC0D66148E044E0053E973 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D4DC0D66148E044E0053E973 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4DC0D65148E044E0053E973 /* InfiniteScroll.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D4DC0D68148E044E0053E973 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4DC0D69148E044E0053E973 /* UIKit.framework */,
+				D4DC0D6B148E044E0053E973 /* Foundation.framework */,
+				D4DC0D6D148E044E0053E973 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4DC0D6F148E044E0053E973 /* InfiniteScroll */ = {
+			isa = PBXGroup;
+			children = (
+				D4DC0D78148E044E0053E973 /* AppDelegate.h */,
+				D4DC0D79148E044E0053E973 /* AppDelegate.m */,
+				D4DC0D7B148E044E0053E973 /* MainStoryboard.storyboard */,
+				D4DC0D7E148E044E0053E973 /* ViewController.h */,
+				D4DC0D7F148E044E0053E973 /* ViewController.m */,
+				D4DC0D70148E044E0053E973 /* Supporting Files */,
+			);
+			path = InfiniteScroll;
+			sourceTree = "<group>";
+		};
+		D4DC0D70148E044E0053E973 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D4DC0D71148E044E0053E973 /* InfiniteScroll-Info.plist */,
+				D4DC0D72148E044E0053E973 /* InfoPlist.strings */,
+				D4DC0D75148E044E0053E973 /* main.m */,
+				D4DC0D77148E044E0053E973 /* InfiniteScroll-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D4DC0D64148E044E0053E973 /* InfiniteScroll */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4DC0D83148E044E0053E973 /* Build configuration list for PBXNativeTarget "InfiniteScroll" */;
+			buildPhases = (
+				D4DC0D61148E044E0053E973 /* Sources */,
+				D4DC0D62148E044E0053E973 /* Frameworks */,
+				D4DC0D63148E044E0053E973 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InfiniteScroll;
+			productName = InfiniteScroll;
+			productReference = D4DC0D65148E044E0053E973 /* InfiniteScroll.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D4DC0D5C148E044E0053E973 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = DremTop;
+			};
+			buildConfigurationList = D4DC0D5F148E044E0053E973 /* Build configuration list for PBXProject "InfiniteScroll" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D4DC0D5A148E044E0053E973;
+			productRefGroup = D4DC0D66148E044E0053E973 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D4DC0D64148E044E0053E973 /* InfiniteScroll */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D4DC0D63148E044E0053E973 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4DC0D74148E044E0053E973 /* InfoPlist.strings in Resources */,
+				D4DC0D7D148E044E0053E973 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D4DC0D61148E044E0053E973 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4DC0D76148E044E0053E973 /* main.m in Sources */,
+				D4DC0D7A148E044E0053E973 /* AppDelegate.m in Sources */,
+				D4DC0D80148E044E0053E973 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D4DC0D72148E044E0053E973 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4DC0D73148E044E0053E973 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D4DC0D7B148E044E0053E973 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4DC0D7C148E044E0053E973 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D4DC0D81148E044E0053E973 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D4DC0D82148E044E0053E973 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D4DC0D84148E044E0053E973 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "InfiniteScroll/InfiniteScroll-Prefix.pch";
+				INFOPLIST_FILE = "InfiniteScroll/InfiniteScroll-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D4DC0D85148E044E0053E973 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "InfiniteScroll/InfiniteScroll-Prefix.pch";
+				INFOPLIST_FILE = "InfiniteScroll/InfiniteScroll-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D4DC0D5F148E044E0053E973 /* Build configuration list for PBXProject "InfiniteScroll" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4DC0D81148E044E0053E973 /* Debug */,
+				D4DC0D82148E044E0053E973 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4DC0D83148E044E0053E973 /* Build configuration list for PBXNativeTarget "InfiniteScroll" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4DC0D84148E044E0053E973 /* Debug */,
+				D4DC0D85148E044E0053E973 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D4DC0D5C148E044E0053E973 /* Project object */;
+}
