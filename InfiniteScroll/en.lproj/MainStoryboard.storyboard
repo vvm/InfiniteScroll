@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="11" contentMode="scaleToFill" id="rVd-QY-476" customClass="ISVScrollView">
-                                <rect key="frame" x="129" y="28" width="60" height="300"/>
+                                <rect key="frame" x="129" y="28" width="60" height="240"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
@@ -24,7 +24,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
                             <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" id="2A7-C5-SZA">
-                                <rect key="frame" x="129" y="148" width="60" height="60"/>
+                                <rect key="frame" x="129" y="118" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.032846715328467155" alpha="1" colorSpace="calibratedWhite"/>
                             </view>

@@ -14,7 +14,6 @@
 -(void) firstlayoutToShow
 {
     [super firstlayoutToShow];
-    pickRect = CGRectMake(0, (self.frame.size.height-viewHeight )/2, viewWidth, viewHeight);
     // 内部视图太短,比如说只有1个内部视图之类
     if (numberOfSubViews*viewHeight < self.frame.size.height)
         tooShortContent = YES;
@@ -103,6 +102,20 @@
     [super layoutSubviews];
     if (!tooShortContent) 
         [self verticalScroll];
+}
+
+// 选择框相关
+-(void)setPickRect:(CGRect)rect
+{
+    // rect为0时默认设置在中间
+    if (CGRectEqualToRect(rect, CGRectZero))
+        pickRect = CGRectMake(0, (self.frame.size.height-viewHeight )/2, viewWidth, viewHeight);
+    else
+        [super setPickRect:rect];
+    // 如果内容区域过小,重置滚动区域
+    if (tooShortContent) {
+        [self setContentSize:CGSizeMake(viewWidth, numberOfSubViews*viewHeight + self.frame.size.height)];
+    }
 }
 
 -(void) visibleRect

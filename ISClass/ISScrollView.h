@@ -31,6 +31,7 @@
 
 -(id)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
 -(void)setWidth:(CGFloat)width andHeight:(CGFloat)height;
+-(void)setPickRect:(CGRect)rect;
 
 -(ISView*) dequeueReusableCellWithIdentifier:(NSString*)identifier; // 从重用中查找
 -(ISView*) viewForIndex:(NSInteger)index;   // 从代理中得到

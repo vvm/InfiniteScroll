@@ -123,11 +123,17 @@
     return;
 }
 
+-(void)setPickRect:(CGRect)rect
+{
+    CGRect r = CGRectUnion(self.bounds, rect);
+    pickRect = r;
+}
+
 -(void)visibleRect{};
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (!decelerate) {
+    if (!decelerate && !CGRectEqualToRect(pickRect, CGRectZero)) {
         [self visibleRect];
     }
     
@@ -135,7 +141,10 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self visibleRect];
+    if (!CGRectEqualToRect(pickRect, CGRectZero)) {
+        [self visibleRect];
+    }
+    
 }
 
 @end

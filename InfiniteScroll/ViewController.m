@@ -26,12 +26,14 @@
     [myScrollView setWidth:60 andHeight:60];
     myScrollView.isdelegate = self;
     [myScrollView setContentSize:CGSizeMake(60, 500)];
+    [myScrollView setPickRect:CGRectZero];
     
     
     
     [myHScrollView setWidth:60 andHeight:60];
     myHScrollView.isdelegate = self;
     [myHScrollView setContentSize:CGSizeMake(500, 60)];
+    [myHScrollView setPickRect:CGRectZero];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -67,7 +69,7 @@
 -(NSInteger)numberOfSubViews:(ISScrollView *)s
 {
     if (s.tag == 11)
-        return 20;
+        return 13;
     if (s.tag == 22)
         return 3;
     return 0;
