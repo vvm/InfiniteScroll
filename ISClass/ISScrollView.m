@@ -147,4 +147,10 @@
     
 }
 
+// 高级功能
+-(void) selectIndex:(NSInteger)index
+{
+    
+}
+
 @end

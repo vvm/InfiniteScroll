@@ -42,6 +42,7 @@
         [self.viewArray addObject:view];
         [self addSubview:view];
     }
+    [self selectIndex:0];
 }
 
 -(void) horizontalScroll
@@ -126,12 +127,7 @@
         }
     }
     if (centerPoint.x > pickRect.origin.x) {
-        ISView* view = [viewArray objectAtIndex:0];
-        CGRect r = view.frame;
-        centerPoint = CGPointMake(r.origin.x -currentOffset.x + viewWidth/2,viewHeight/2);
-        CGFloat diffX = centerPoint.x - (pickRect.origin.x+pickRect.size.width/2);
-        currentOffset.x += diffX;
-        [self setContentOffset:currentOffset animated:YES];
+        [self selectIndex:0];
     }
     else
     {
@@ -139,7 +135,22 @@
         currentOffset.x += diffX;
         [self setContentOffset:currentOffset animated:YES];
     }
-    
-    
+}
+
+-(void)selectIndex:(NSInteger)index
+{
+    if (CGRectEqualToRect(pickRect, CGRectZero) || index >= numberOfSubViews) {
+        return;
+    }
+    if (tooShortContent) {
+        CGPoint currentOffset = [self contentOffset];
+        CGPoint centerPoint = CGPointMake(0, 0);
+        ISView* view = [viewArray objectAtIndex:0];
+        CGRect r = view.frame;
+        centerPoint = CGPointMake(r.origin.x -currentOffset.x + viewWidth/2,viewHeight/2);
+        CGFloat diffX = centerPoint.x - (pickRect.origin.x+pickRect.size.width/2);
+        currentOffset.x += diffX;
+        [self setContentOffset:currentOffset animated:YES];
+    }
 }
 @end

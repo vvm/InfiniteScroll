@@ -46,6 +46,7 @@
         [self.viewArray addObject:view];
         [self addSubview:view];
     }
+    [self selectIndex:0];
 }
 
 // 纵向滚动
@@ -133,12 +134,7 @@
         }
     }
     if (centerPoint.y > pickRect.origin.y) {
-        ISView* view = [viewArray objectAtIndex:0];
-        CGRect r = view.frame;
-        centerPoint = CGPointMake(viewWidth/2, r.origin.y -currentOffset.y + viewHeight/2);
-        CGFloat diffY = centerPoint.y - (pickRect.origin.y+pickRect.size.height/2);
-        currentOffset.y += diffY;
-        [self setContentOffset:currentOffset animated:YES];
+        [self selectIndex:0];
     }
     else
     {
@@ -146,7 +142,22 @@
         currentOffset.y += diffY;
         [self setContentOffset:currentOffset animated:YES];
     }
-    
-    
+}
+
+-(void)selectIndex:(NSInteger)index
+{
+    if (CGRectEqualToRect(pickRect, CGRectZero) || index >= numberOfSubViews) {
+        return;
+    }
+    if (tooShortContent) {
+        CGPoint currentOffset = [self contentOffset];
+        CGPoint centerPoint = CGPointMake(0, 0);
+        ISView* view = [viewArray objectAtIndex:index];
+        CGRect r = view.frame;
+        centerPoint = CGPointMake(viewWidth/2, r.origin.y -currentOffset.y + viewHeight/2);
+        CGFloat diffY = centerPoint.y - (pickRect.origin.y+pickRect.size.height/2);
+        currentOffset.y += diffY;
+        [self setContentOffset:currentOffset animated:YES];
+    }
 }
 @end

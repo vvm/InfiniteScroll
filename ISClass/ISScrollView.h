@@ -38,6 +38,8 @@
 
 -(void) firstlayoutToShow;              // 开始显示时的设置
 -(void) visibleRect;
+
+-(void) selectIndex:(NSInteger)index;
 @end
 
 
