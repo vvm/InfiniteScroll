@@ -12,7 +12,7 @@
 
 @protocol ISScrollViewDelegate;
 
-@interface ISScrollView : UIScrollView
+@interface ISScrollView : UIScrollView<UIScrollViewDelegate>
 {
     BOOL tooShortContent;
     CGFloat scrollDistance;                 // 初始偏移,方便两个方向滚动
@@ -21,12 +21,13 @@
     CGFloat viewHeight;
     NSMutableDictionary* viewDictionary;    // 重用视图记录表
     NSMutableArray* viewArray;              // 当前所有子view顺序
-    id<ISScrollViewDelegate,UIScrollViewDelegate> delegate;
+    id<ISScrollViewDelegate> isdelegate;
     
+    CGRect pickRect;                        // 选择框
 }
 @property(nonatomic,retain) NSMutableDictionary* viewDictionary;
 @property(nonatomic,retain) NSMutableArray* viewArray;
-@property(nonatomic,assign) id<ISScrollViewDelegate,UIScrollViewDelegate> delegate;
+@property(nonatomic,assign) id<ISScrollViewDelegate> isdelegate;
 
 -(id)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
 -(void)setWidth:(CGFloat)width andHeight:(CGFloat)height;
@@ -35,6 +36,7 @@
 -(ISView*) viewForIndex:(NSInteger)index;   // 从代理中得到
 
 -(void) firstlayoutToShow;              // 开始显示时的设置
+-(void) visibleRect;
 @end
 
 

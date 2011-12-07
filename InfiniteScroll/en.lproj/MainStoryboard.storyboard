@@ -17,15 +17,22 @@
                                 <rect key="frame" x="129" y="28" width="60" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="4" id="WF4-Hg-t9I"/>
-                                </connections>
                             </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="22" contentMode="scaleToFill" id="5K5-gl-XXb" customClass="ISHScrollView">
                                 <rect key="frame" x="12" y="346" width="300" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
+                            <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" id="2A7-C5-SZA">
+                                <rect key="frame" x="129" y="148" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.032846715328467155" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" id="Wid-dX-ORL">
+                                <rect key="frame" x="132" y="346" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.032846715329999998" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.85098039219999999" green="0.047058823530000002" blue="0.035294117649999998" alpha="1" colorSpace="deviceRGB"/>
                     </view>

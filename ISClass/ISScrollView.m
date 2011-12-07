@@ -11,7 +11,8 @@
 @implementation ISScrollView
 @synthesize viewArray;
 @synthesize viewDictionary;
-@synthesize delegate;
+@synthesize isdelegate;
+
 
 // nib 加载
 -(void)awakeFromNib
@@ -69,7 +70,7 @@
     }
     // 实际的索引位置
     NSInteger realIndex = index % numberOfSubViews;
-    ISView* view = [[delegate viewForScroll:self AtIndex:realIndex] autorelease];
+    ISView* view = [[isdelegate viewForScroll:self AtIndex:realIndex] autorelease];
     view.indexPath = [NSIndexPath indexPathForRow:realIndex inSection:0];
     return view;
 }
@@ -77,9 +78,10 @@
 // 首次显示时在最前面多显示一个视图(视图与最后一个相同)
 -(void) firstlayoutToShow
 {        
+    self.delegate = self;
     self.showsVerticalScrollIndicator = NO;
     self.showsHorizontalScrollIndicator = NO;
-    numberOfSubViews = [delegate numberOfSubViews:self];
+    numberOfSubViews = [isdelegate numberOfSubViews:self];
     tooShortContent = NO;
 }
 
@@ -108,6 +110,32 @@
     [viewDictionary release];
     [viewArray release];
     [super dealloc];
+}
+
+// 下面系列是对有选择框时进行选择
+#pragma scroll view delegate
+// 使用自己作代理
+-(void)setDelegate:(id<UIScrollViewDelegate>)delegate
+{
+    if ([delegate isEqual:self]) {
+        [super setDelegate:delegate];
+    }
+    return;
+}
+
+-(void)visibleRect{};
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        [self visibleRect];
+    }
+    
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self visibleRect];
 }
 
 @end

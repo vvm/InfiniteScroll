@@ -24,13 +24,13 @@
 	// Do any additional setup after loading the view, typically from a nib.
 
     [myScrollView setWidth:60 andHeight:60];
-    myScrollView.delegate = self;
+    myScrollView.isdelegate = self;
     [myScrollView setContentSize:CGSizeMake(60, 500)];
     
     
     
     [myHScrollView setWidth:60 andHeight:60];
-    myHScrollView.delegate = self;
+    myHScrollView.isdelegate = self;
     [myHScrollView setContentSize:CGSizeMake(500, 60)];
 }
 
@@ -67,7 +67,7 @@
 -(NSInteger)numberOfSubViews:(ISScrollView *)s
 {
     if (s.tag == 11)
-        return 2;
+        return 20;
     if (s.tag == 22)
         return 3;
     return 0;

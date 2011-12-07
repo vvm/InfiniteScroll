@@ -13,6 +13,7 @@
 -(void) firstlayoutToShow
 {    
     [super firstlayoutToShow];
+    pickRect = CGRectMake((self.frame.size.width-viewWidth )/2, 0, viewWidth, viewHeight);
     // 把内容放在中间,这样就方便滚动不会超出范围了
     if (numberOfSubViews*viewWidth < self.frame.size.width)
         tooShortContent = YES;
@@ -47,9 +48,6 @@
 -(void) horizontalScroll
 {
     CGPoint currentOffset = [self contentOffset];
-    if (tooShortContent) {
-        return;
-    }
     CGFloat distanceX = 0;
     if ((currentOffset.x-scrollDistance) > viewWidth || (currentOffset.x-scrollDistance) < -viewWidth) {
         if (currentOffset.x-scrollDistance > viewWidth) {
@@ -96,6 +94,39 @@
         firstTime = !firstTime;
     }
     [super layoutSubviews];
-    [self horizontalScroll];
+    if (!tooShortContent)
+        [self horizontalScroll];
+}
+
+-(void) visibleRect
+{
+    CGPoint currentOffset = [self contentOffset];
+    CGPoint centerPoint = CGPointMake(0, 0);
+    for (ISView* view in viewArray) {
+        CGRect r = view.frame;
+        centerPoint = CGPointMake(r.origin.x -currentOffset.x + viewWidth/2,viewHeight/2 );
+        if (CGRectContainsPoint(pickRect, centerPoint)) {
+            CGFloat diffX = centerPoint.x - (pickRect.origin.x+pickRect.size.width/2);
+            currentOffset.x += diffX;
+            [self setContentOffset:currentOffset animated:YES];
+            return;
+        }
+    }
+    if (centerPoint.x > pickRect.origin.x) {
+        ISView* view = [viewArray objectAtIndex:0];
+        CGRect r = view.frame;
+        centerPoint = CGPointMake(r.origin.x -currentOffset.x + viewWidth/2,viewHeight/2);
+        CGFloat diffX = centerPoint.x - (pickRect.origin.x+pickRect.size.width/2);
+        currentOffset.x += diffX;
+        [self setContentOffset:currentOffset animated:YES];
+    }
+    else
+    {
+        CGFloat diffX = centerPoint.x - (pickRect.origin.x+pickRect.size.width/2);
+        currentOffset.x += diffX;
+        [self setContentOffset:currentOffset animated:YES];
+    }
+    
+    
 }
 @end

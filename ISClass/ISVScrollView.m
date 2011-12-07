@@ -14,6 +14,7 @@
 -(void) firstlayoutToShow
 {
     [super firstlayoutToShow];
+    pickRect = CGRectMake(0, (self.frame.size.height-viewHeight )/2, viewWidth, viewHeight);
     // 内部视图太短,比如说只有1个内部视图之类
     if (numberOfSubViews*viewHeight < self.frame.size.height)
         tooShortContent = YES;
@@ -52,9 +53,6 @@
 -(void)verticalScroll
 {
     CGPoint currentOffset = [self contentOffset];
-    if (tooShortContent) {
-        return;
-    }
     CGFloat distanceY = 0;
     if ((currentOffset.y-scrollDistance) > viewHeight || (currentOffset.y-scrollDistance) < -viewHeight) {
         if (currentOffset.y-scrollDistance > viewHeight) {
@@ -103,6 +101,39 @@
         firstTime = !firstTime;
     }
     [super layoutSubviews];
-    [self verticalScroll];
+    if (!tooShortContent) 
+        [self verticalScroll];
+}
+
+-(void) visibleRect
+{
+    CGPoint currentOffset = [self contentOffset];
+    CGPoint centerPoint = CGPointMake(0, 0);
+    for (ISView* view in viewArray) {
+        CGRect r = view.frame;
+        centerPoint = CGPointMake(viewWidth/2, r.origin.y -currentOffset.y + viewHeight/2);
+        if (CGRectContainsPoint(pickRect, centerPoint)) {
+            CGFloat diffY = centerPoint.y - (pickRect.origin.y+pickRect.size.height/2);
+            currentOffset.y += diffY;
+            [self setContentOffset:currentOffset animated:YES];
+            return;
+        }
+    }
+    if (centerPoint.y > pickRect.origin.y) {
+        ISView* view = [viewArray objectAtIndex:0];
+        CGRect r = view.frame;
+        centerPoint = CGPointMake(viewWidth/2, r.origin.y -currentOffset.y + viewHeight/2);
+        CGFloat diffY = centerPoint.y - (pickRect.origin.y+pickRect.size.height/2);
+        currentOffset.y += diffY;
+        [self setContentOffset:currentOffset animated:YES];
+    }
+    else
+    {
+        CGFloat diffY = centerPoint.y - (pickRect.origin.y+pickRect.size.height/2);
+        currentOffset.y += diffY;
+        [self setContentOffset:currentOffset animated:YES];
+    }
+    
+    
 }
 @end
