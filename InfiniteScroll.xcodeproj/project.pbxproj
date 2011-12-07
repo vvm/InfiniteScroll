@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D468A86D148F0585000A4362 /* ISVScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D468A86C148F0585000A4362 /* ISVScrollView.m */; };
-		D468A871148F0595000A4362 /* ISHScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D468A870148F0595000A4362 /* ISHScrollView.m */; };
+		D468A87A148F1614000A4362 /* ISHScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D468A873148F1614000A4362 /* ISHScrollView.m */; };
+		D468A87B148F1614000A4362 /* ISScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D468A875148F1614000A4362 /* ISScrollView.m */; };
+		D468A87C148F1614000A4362 /* ISView.m in Sources */ = {isa = PBXBuildFile; fileRef = D468A877148F1614000A4362 /* ISView.m */; };
+		D468A87D148F1614000A4362 /* ISVScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D468A879148F1614000A4362 /* ISVScrollView.m */; };
 		D4DC0D6A148E044E0053E973 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D69148E044E0053E973 /* UIKit.framework */; };
 		D4DC0D6C148E044E0053E973 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D6B148E044E0053E973 /* Foundation.framework */; };
 		D4DC0D6E148E044E0053E973 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D6D148E044E0053E973 /* CoreGraphics.framework */; };
@@ -17,15 +19,17 @@
 		D4DC0D7A148E044E0053E973 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC0D79148E044E0053E973 /* AppDelegate.m */; };
 		D4DC0D7D148E044E0053E973 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4DC0D7B148E044E0053E973 /* MainStoryboard.storyboard */; };
 		D4DC0D80148E044E0053E973 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC0D7F148E044E0053E973 /* ViewController.m */; };
-		D4DC0D89148E049C0053E973 /* ISScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC0D88148E049C0053E973 /* ISScrollView.m */; };
-		D4DC0D8C148E06150053E973 /* ISView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC0D8B148E06150053E973 /* ISView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D468A86B148F0585000A4362 /* ISVScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISVScrollView.h; sourceTree = "<group>"; };
-		D468A86C148F0585000A4362 /* ISVScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISVScrollView.m; sourceTree = "<group>"; };
-		D468A86F148F0595000A4362 /* ISHScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHScrollView.h; sourceTree = "<group>"; };
-		D468A870148F0595000A4362 /* ISHScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISHScrollView.m; sourceTree = "<group>"; };
+		D468A872148F1614000A4362 /* ISHScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISHScrollView.h; path = ISClass/ISHScrollView.h; sourceTree = "<group>"; };
+		D468A873148F1614000A4362 /* ISHScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISHScrollView.m; path = ISClass/ISHScrollView.m; sourceTree = "<group>"; };
+		D468A874148F1614000A4362 /* ISScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISScrollView.h; path = ISClass/ISScrollView.h; sourceTree = "<group>"; };
+		D468A875148F1614000A4362 /* ISScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISScrollView.m; path = ISClass/ISScrollView.m; sourceTree = "<group>"; };
+		D468A876148F1614000A4362 /* ISView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISView.h; path = ISClass/ISView.h; sourceTree = "<group>"; };
+		D468A877148F1614000A4362 /* ISView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISView.m; path = ISClass/ISView.m; sourceTree = "<group>"; };
+		D468A878148F1614000A4362 /* ISVScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISVScrollView.h; path = ISClass/ISVScrollView.h; sourceTree = "<group>"; };
+		D468A879148F1614000A4362 /* ISVScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISVScrollView.m; path = ISClass/ISVScrollView.m; sourceTree = "<group>"; };
 		D4DC0D65148E044E0053E973 /* InfiniteScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DC0D69148E044E0053E973 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D4DC0D6B148E044E0053E973 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -39,10 +43,6 @@
 		D4DC0D7C148E044E0053E973 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D4DC0D7E148E044E0053E973 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D4DC0D7F148E044E0053E973 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		D4DC0D87148E049C0053E973 /* ISScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISScrollView.h; sourceTree = "<group>"; };
-		D4DC0D88148E049C0053E973 /* ISScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISScrollView.m; sourceTree = "<group>"; };
-		D4DC0D8A148E06150053E973 /* ISView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISView.h; sourceTree = "<group>"; };
-		D4DC0D8B148E06150053E973 /* ISView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,14 +114,14 @@
 		D4DC0D86148E04600053E973 /* ISClass */ = {
 			isa = PBXGroup;
 			children = (
-				D4DC0D87148E049C0053E973 /* ISScrollView.h */,
-				D4DC0D88148E049C0053E973 /* ISScrollView.m */,
-				D468A86B148F0585000A4362 /* ISVScrollView.h */,
-				D468A86C148F0585000A4362 /* ISVScrollView.m */,
-				D468A86F148F0595000A4362 /* ISHScrollView.h */,
-				D468A870148F0595000A4362 /* ISHScrollView.m */,
-				D4DC0D8A148E06150053E973 /* ISView.h */,
-				D4DC0D8B148E06150053E973 /* ISView.m */,
+				D468A872148F1614000A4362 /* ISHScrollView.h */,
+				D468A873148F1614000A4362 /* ISHScrollView.m */,
+				D468A874148F1614000A4362 /* ISScrollView.h */,
+				D468A875148F1614000A4362 /* ISScrollView.m */,
+				D468A876148F1614000A4362 /* ISView.h */,
+				D468A877148F1614000A4362 /* ISView.m */,
+				D468A878148F1614000A4362 /* ISVScrollView.h */,
+				D468A879148F1614000A4362 /* ISVScrollView.m */,
 			);
 			name = ISClass;
 			sourceTree = "<group>";
@@ -192,10 +192,10 @@
 				D4DC0D76148E044E0053E973 /* main.m in Sources */,
 				D4DC0D7A148E044E0053E973 /* AppDelegate.m in Sources */,
 				D4DC0D80148E044E0053E973 /* ViewController.m in Sources */,
-				D4DC0D89148E049C0053E973 /* ISScrollView.m in Sources */,
-				D4DC0D8C148E06150053E973 /* ISView.m in Sources */,
-				D468A86D148F0585000A4362 /* ISVScrollView.m in Sources */,
-				D468A871148F0595000A4362 /* ISHScrollView.m in Sources */,
+				D468A87A148F1614000A4362 /* ISHScrollView.m in Sources */,
+				D468A87B148F1614000A4362 /* ISScrollView.m in Sources */,
+				D468A87C148F1614000A4362 /* ISView.m in Sources */,
+				D468A87D148F1614000A4362 /* ISVScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
