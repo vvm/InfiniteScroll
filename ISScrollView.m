@@ -61,11 +61,15 @@
     }
 }
 
+// 主要是为了记录index
 -(ISView*) viewForIndex:(NSInteger)index
 {
+    if (numberOfSubViews < 1) {
+        return nil;
+    }
     // 实际的索引位置
     NSInteger realIndex = index % numberOfSubViews;
-    ISView* view = [[delegate viewForIndex:realIndex] autorelease];
+    ISView* view = [[delegate viewForScroll:self AtIndex:realIndex] autorelease];
     view.indexPath = [NSIndexPath indexPathForRow:realIndex inSection:0];
     return view;
 }
@@ -73,7 +77,9 @@
 // 首次显示时在最前面多显示一个视图(视图与最后一个相同)
 -(void) firstlayoutToShow
 {        
-    numberOfSubViews = [delegate numberOfSubViews];
+    self.showsVerticalScrollIndicator = NO;
+    self.showsHorizontalScrollIndicator = NO;
+    numberOfSubViews = [delegate numberOfSubViews:self];
 }
 
 // 根据标识查找可重用的视图
@@ -92,17 +98,14 @@
 // 滚动就相应调整
 -(void)layoutSubviews
 {
-    static BOOL firstTime = YES;
-    if (firstTime) {
-        [self firstlayoutToShow];
-        firstTime = !firstTime;
-    }
-    
     [super layoutSubviews];
 }
 
+
 -(void)dealloc
 {
+    [viewDictionary release];
+    [viewArray release];
     [super dealloc];
 }
 

@@ -26,6 +26,12 @@
     [myScrollView setWidth:60 andHeight:60];
     myScrollView.delegate = self;
     [myScrollView setContentSize:CGSizeMake(60, 500)];
+    
+    
+    
+    [myHScrollView setWidth:60 andHeight:60];
+    myHScrollView.delegate = self;
+    [myHScrollView setContentSize:CGSizeMake(500, 60)];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -35,7 +41,7 @@
 }
 
 
--(ISView *)viewForIndex:(NSInteger)index
+-(ISView *)viewForScroll:(ISScrollView *)s AtIndex:(NSInteger)index
 {//60*300
     static NSString* indentifier = @"cell";
     ISView* view = [myScrollView dequeueReusableCellWithIdentifier:indentifier];
@@ -58,8 +64,9 @@
 }
 
 
--(NSInteger)numberOfSubViews
+-(NSInteger)numberOfSubViews:(ISScrollView *)s
 {
     return 20;
 }
+
 @end

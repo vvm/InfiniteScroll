@@ -14,17 +14,22 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="rVd-QY-476" customClass="ISVScrollView">
-                                <rect key="frame" x="129" y="82" width="60" height="300"/>
+                                <rect key="frame" x="129" y="28" width="60" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="4" id="WF4-Hg-t9I"/>
                                 </connections>
                             </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5K5-gl-XXb" customClass="ISHScrollView">
+                                <rect key="frame" x="12" y="346" width="300" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.85098039219999999" green="0.047058823530000002" blue="0.035294117649999998" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <connections>
+                        <outlet property="myHScrollView" destination="5K5-gl-XXb" id="raa-PL-g8S"/>
                         <outlet property="myScrollView" destination="rVd-QY-476" id="AUJ-vZ-Wkp"/>
                         <outlet property="view" destination="3" id="XUj-5K-Geq"/>
                     </connections>

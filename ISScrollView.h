@@ -9,16 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ISView.h"
 
-@protocol ISScrollViewDelegate
--(NSInteger) numberOfSubViews;          // 子视图个数
--(ISView*) viewForIndex:(NSInteger)index;                // 申请子视图
 
-@end
-
+@protocol ISScrollViewDelegate;
 
 @interface ISScrollView : UIScrollView
 {
-    CGFloat scrollDistance;
+    CGFloat scrollDistance;                 // 初始偏移,方便两个方向滚动
     NSInteger numberOfSubViews;
     CGFloat viewWidth;
     CGFloat viewHeight;
@@ -34,11 +30,14 @@
 -(id)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
 -(void)setWidth:(CGFloat)width andHeight:(CGFloat)height;
 
--(ISView*) dequeueReusableCellWithIdentifier:(NSString*)identifier;
+-(ISView*) dequeueReusableCellWithIdentifier:(NSString*)identifier; // 从重用中查找
+-(ISView*) viewForIndex:(NSInteger)index;   // 从代理中得到
 
-
--(ISView*) viewForIndex:(NSInteger)index;
--(void) firstlayoutToShow;
+-(void) firstlayoutToShow;              // 开始显示时的设置
 @end
 
 
+@protocol ISScrollViewDelegate
+-(NSInteger) numberOfSubViews:(ISScrollView*)s;          // 子视图个数
+-(ISView*) viewForScroll:(ISScrollView*)s AtIndex:(NSInteger)index;                // 申请子视图
+@end

@@ -85,6 +85,11 @@
 // 滚动就相应调整
 -(void)layoutSubviews
 {
+    static BOOL firstTime = YES;
+    if (firstTime) {
+        [self firstlayoutToShow];
+        firstTime = !firstTime;
+    }
     [super layoutSubviews];
     [self verticalScroll];
 }

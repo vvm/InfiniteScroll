@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ISVScrollView.h"
+#import "ISHScrollView.h"
 
 @interface ViewController : UIViewController<ISScrollViewDelegate,UIScrollViewDelegate>
 {
     IBOutlet ISVScrollView* myScrollView;
+    IBOutlet ISHScrollView* myHScrollView;
 }
 @end

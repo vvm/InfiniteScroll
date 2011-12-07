@@ -10,8 +10,8 @@
 
 @interface ISView : UIView
 {
-    NSString* indentifier;
-    NSIndexPath* indexPath;
+    NSString* indentifier;      // 标识
+    NSIndexPath* indexPath;     // 所在
 }
 @property(nonatomic,retain) NSIndexPath* indexPath;
 @property(nonatomic,copy,readonly)NSString* indentifier;

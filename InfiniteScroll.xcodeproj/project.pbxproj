@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D468A86D148F0585000A4362 /* ISVScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D468A86C148F0585000A4362 /* ISVScrollView.m */; };
+		D468A871148F0595000A4362 /* ISHScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D468A870148F0595000A4362 /* ISHScrollView.m */; };
 		D4DC0D6A148E044E0053E973 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D69148E044E0053E973 /* UIKit.framework */; };
 		D4DC0D6C148E044E0053E973 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D6B148E044E0053E973 /* Foundation.framework */; };
 		D4DC0D6E148E044E0053E973 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D6D148E044E0053E973 /* CoreGraphics.framework */; };
@@ -15,22 +17,32 @@
 		D4DC0D7A148E044E0053E973 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC0D79148E044E0053E973 /* AppDelegate.m */; };
 		D4DC0D7D148E044E0053E973 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4DC0D7B148E044E0053E973 /* MainStoryboard.storyboard */; };
 		D4DC0D80148E044E0053E973 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC0D7F148E044E0053E973 /* ViewController.m */; };
+		D4DC0D89148E049C0053E973 /* ISScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC0D88148E049C0053E973 /* ISScrollView.m */; };
+		D4DC0D8C148E06150053E973 /* ISView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC0D8B148E06150053E973 /* ISView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D468A86B148F0585000A4362 /* ISVScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISVScrollView.h; sourceTree = "<group>"; };
+		D468A86C148F0585000A4362 /* ISVScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISVScrollView.m; sourceTree = "<group>"; };
+		D468A86F148F0595000A4362 /* ISHScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHScrollView.h; sourceTree = "<group>"; };
+		D468A870148F0595000A4362 /* ISHScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISHScrollView.m; sourceTree = "<group>"; };
 		D4DC0D65148E044E0053E973 /* InfiniteScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DC0D69148E044E0053E973 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D4DC0D6B148E044E0053E973 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4DC0D6D148E044E0053E973 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D4DC0D71148E044E0053E973 /* InfiniteScroll-Info.plist */ = {isa = PBXFileReference; path = "InfiniteScroll-Info.plist"; sourceTree = "<group>"; };
+		D4DC0D71148E044E0053E973 /* InfiniteScroll-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InfiniteScroll-Info.plist"; sourceTree = "<group>"; };
 		D4DC0D73148E044E0053E973 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D4DC0D75148E044E0053E973 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D4DC0D77148E044E0053E973 /* InfiniteScroll-Prefix.pch */ = {isa = PBXFileReference; path = "InfiniteScroll-Prefix.pch"; sourceTree = "<group>"; };
-		D4DC0D78148E044E0053E973 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		D4DC0D77148E044E0053E973 /* InfiniteScroll-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InfiniteScroll-Prefix.pch"; sourceTree = "<group>"; };
+		D4DC0D78148E044E0053E973 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4DC0D79148E044E0053E973 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D4DC0D7C148E044E0053E973 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		D4DC0D7E148E044E0053E973 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		D4DC0D7E148E044E0053E973 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D4DC0D7F148E044E0053E973 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D4DC0D87148E049C0053E973 /* ISScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISScrollView.h; sourceTree = "<group>"; };
+		D4DC0D88148E049C0053E973 /* ISScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISScrollView.m; sourceTree = "<group>"; };
+		D4DC0D8A148E06150053E973 /* ISView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISView.h; sourceTree = "<group>"; };
+		D4DC0D8B148E06150053E973 /* ISView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +62,7 @@
 		D4DC0D5A148E044E0053E973 = {
 			isa = PBXGroup;
 			children = (
+				D4DC0D86148E04600053E973 /* ISClass */,
 				D4DC0D6F148E044E0053E973 /* InfiniteScroll */,
 				D4DC0D68148E044E0053E973 /* Frameworks */,
 				D4DC0D66148E044E0053E973 /* Products */,
@@ -96,6 +109,21 @@
 				D4DC0D77148E044E0053E973 /* InfiniteScroll-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D4DC0D86148E04600053E973 /* ISClass */ = {
+			isa = PBXGroup;
+			children = (
+				D4DC0D87148E049C0053E973 /* ISScrollView.h */,
+				D4DC0D88148E049C0053E973 /* ISScrollView.m */,
+				D468A86B148F0585000A4362 /* ISVScrollView.h */,
+				D468A86C148F0585000A4362 /* ISVScrollView.m */,
+				D468A86F148F0595000A4362 /* ISHScrollView.h */,
+				D468A870148F0595000A4362 /* ISHScrollView.m */,
+				D4DC0D8A148E06150053E973 /* ISView.h */,
+				D4DC0D8B148E06150053E973 /* ISView.m */,
+			);
+			name = ISClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +192,10 @@
 				D4DC0D76148E044E0053E973 /* main.m in Sources */,
 				D4DC0D7A148E044E0053E973 /* AppDelegate.m in Sources */,
 				D4DC0D80148E044E0053E973 /* ViewController.m in Sources */,
+				D4DC0D89148E049C0053E973 /* ISScrollView.m in Sources */,
+				D4DC0D8C148E06150053E973 /* ISView.m in Sources */,
+				D468A86D148F0585000A4362 /* ISVScrollView.m in Sources */,
+				D468A871148F0595000A4362 /* ISHScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +305,7 @@
 				D4DC0D85148E044E0053E973 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -41,47 +41,51 @@
 -(void) horizontalScroll
 {
     CGPoint currentOffset = [self contentOffset];
-    if (currentOffset.y > 50) {
-        CGFloat distanceY = currentOffset.y - 50;
-        ISView* oldView = [self.viewArray objectAtIndex:0];
-        [oldView removeFromSuperview];
-        [self.viewArray removeObjectAtIndex:0];
-        ISView* firstView = [viewArray objectAtIndex:0];
-        ISView* newView = [[ISView alloc] initWithFrame:CGRectMake(0, 360, 70, 50)];
-        newView.backgroundColor = firstView.backgroundColor;
-        [self addSubview:newView];
-        [self.viewArray addObject:newView];
-        
-        CGFloat h = -100;
-        for (ISView* view in viewArray) {
-            h += 50;
-            view.frame = CGRectMake(0, h, 70,50);
+    CGFloat distanceX = 0;
+    if ((currentOffset.x-scrollDistance) > viewWidth || (currentOffset.x-scrollDistance) < -viewWidth) {
+        if (currentOffset.x-scrollDistance > viewWidth) {
+            distanceX = currentOffset.x - viewHeight;
+            ISView* oldView = [self.viewArray objectAtIndex:0];
+            NSMutableArray * array = [viewDictionary objectForKey:oldView.indentifier];
+            if (array != nil)
+                [array addObject:oldView];
+            [oldView removeFromSuperview];
+            [self.viewArray removeObjectAtIndex:0];
+            int lastIndex = [[(ISView*)[viewArray lastObject] indexPath] row];
+            ISView* newView = [self viewForIndex:lastIndex+1];
+            [self addSubview:newView];
+            [self.viewArray addObject:newView];
         }
-        [self setContentOffset:CGPointMake(0, distanceY)];
-    }
-    else if (currentOffset.y < 0) {
-        CGFloat distanceY = 50 - currentOffset.y;
-        ISView* oldView = [self.viewArray lastObject];
-        [oldView removeFromSuperview];
-        [self.viewArray removeObjectAtIndex:[viewArray count]-1];
-        ISView* lastView = [viewArray lastObject];
-        ISView* newView = [[ISView alloc] initWithFrame:CGRectMake(0, -50, 70, 50)];
-        newView.backgroundColor = lastView.backgroundColor;
-        [self addSubview:newView];
-        [self.viewArray insertObject:newView atIndex:0];
-        
-        CGFloat h = -100;
-        for (ISView* view in viewArray) {
-            h += 50;
-            view.frame = CGRectMake(0, h, 70,50);
+        else if (currentOffset.x-scrollDistance < -viewWidth) {
+            distanceX = viewHeight + currentOffset.x;
+            ISView* oldView = [self.viewArray lastObject];
+            NSMutableArray * array = [viewDictionary objectForKey:oldView.indentifier];
+            if (array != nil)
+                [array addObject:oldView];
+            [oldView removeFromSuperview];
+            [self.viewArray removeObjectAtIndex:[viewArray count]-1];
+            int headIndex = [[(ISView*)[viewArray objectAtIndex:0] indexPath] row];
+            ISView* newView = [self viewForIndex:headIndex-1+numberOfSubViews];
+            [self addSubview:newView];
+            [self.viewArray insertObject:newView atIndex:0];
         }
-        [self setContentOffset:CGPointMake(0, distanceY)];
+        CGFloat h = -viewWidth;
+        for (ISView* view in viewArray) {
+            view.frame = CGRectMake(scrollDistance+h, 0, viewWidth,viewHeight);
+            h += viewWidth;
+        }
+        [self setContentOffset:CGPointMake(distanceX, 0)];
     }
 }
 
 // 滚动就相应调整
 -(void)layoutSubviews
 {
+    static BOOL firstTime = YES;
+    if (firstTime) {
+        [self firstlayoutToShow];
+        firstTime = !firstTime;
+    }
     [super layoutSubviews];
     [self horizontalScroll];
 }
