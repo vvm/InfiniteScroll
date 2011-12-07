@@ -14,20 +14,29 @@
 -(void) firstlayoutToShow
 {
     [super firstlayoutToShow];
+    // 内部视图太短,比如说只有1个内部视图之类
+    if (numberOfSubViews*viewHeight < self.frame.size.height)
+        tooShortContent = YES;
     // 把内容放在中间,这样就方便滚动不会超出范围了
     scrollDistance = (self.contentSize.height - self.frame.size.height )/2;
+    if (tooShortContent)
+        scrollDistance = (self.contentSize.height - (numberOfSubViews*viewHeight) )/2;
     self.contentOffset = CGPointMake(0, scrollDistance);
+    
     
     ISView* headView = [self viewForIndex:numberOfSubViews-1];
     CGFloat scrollLimite = 0;
     CGFloat scrollUnit = 0;
     
-    scrollLimite = self.frame.size.height + viewHeight;
+    scrollLimite = tooShortContent?numberOfSubViews*viewHeight:self.frame.size.height + viewHeight;
     scrollUnit = viewHeight;
     headView.frame = CGRectMake(0, scrollDistance-viewHeight, viewWidth, viewHeight);
 
-    [self.viewArray addObject:headView];
-    [self addSubview:headView];
+    if (!tooShortContent) {
+        [self.viewArray addObject:headView];
+        [self addSubview:headView];
+    }
+    
     
     for (int i = 0; i< scrollLimite; i+=scrollUnit) {
         ISView* view = [self viewForIndex:i/scrollUnit];
@@ -43,6 +52,9 @@
 -(void)verticalScroll
 {
     CGPoint currentOffset = [self contentOffset];
+    if (tooShortContent) {
+        return;
+    }
     CGFloat distanceY = 0;
     if ((currentOffset.y-scrollDistance) > viewHeight || (currentOffset.y-scrollDistance) < -viewHeight) {
         if (currentOffset.y-scrollDistance > viewHeight) {

@@ -114,14 +114,14 @@
 		D4DC0D86148E04600053E973 /* ISClass */ = {
 			isa = PBXGroup;
 			children = (
-				D468A872148F1614000A4362 /* ISHScrollView.h */,
-				D468A873148F1614000A4362 /* ISHScrollView.m */,
 				D468A874148F1614000A4362 /* ISScrollView.h */,
 				D468A875148F1614000A4362 /* ISScrollView.m */,
 				D468A876148F1614000A4362 /* ISView.h */,
 				D468A877148F1614000A4362 /* ISView.m */,
 				D468A878148F1614000A4362 /* ISVScrollView.h */,
 				D468A879148F1614000A4362 /* ISVScrollView.m */,
+				D468A872148F1614000A4362 /* ISHScrollView.h */,
+				D468A873148F1614000A4362 /* ISHScrollView.m */,
 			);
 			name = ISClass;
 			sourceTree = "<group>";

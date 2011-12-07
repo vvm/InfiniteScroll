@@ -9,29 +9,35 @@
 #import "ISHScrollView.h"
 
 @implementation ISHScrollView
-// 首次显示时在最前面多显示一个视图(视图与最后一个相同)
+// 首次显示时在最前面多显示一个视图(视图与最后一个相同)  
 -(void) firstlayoutToShow
-{
+{    
     [super firstlayoutToShow];
     // 把内容放在中间,这样就方便滚动不会超出范围了
+    if (numberOfSubViews*viewWidth < self.frame.size.width)
+        tooShortContent = YES;
     scrollDistance = (self.contentSize.width - self.frame.size.width )/2;
+    if (tooShortContent)
+        scrollDistance = (self.contentSize.width - (numberOfSubViews*viewWidth) )/2;
     self.contentOffset = CGPointMake(scrollDistance, 0);
     
     ISView* headView = [self viewForIndex:numberOfSubViews-1];
     CGFloat scrollLimite = 0;
     CGFloat scrollUnit = 0;
 
-    scrollLimite = self.frame.size.width + viewWidth;
+    scrollLimite = tooShortContent?numberOfSubViews*viewWidth:self.frame.size.width + viewWidth;
     scrollUnit = viewWidth;
     headView.frame = CGRectMake(-viewWidth,0 , viewWidth, viewHeight);
 
-    [self.viewArray addObject:headView];
-    [self addSubview:headView];
+    if (!tooShortContent) {
+        [self.viewArray addObject:headView];
+        [self addSubview:headView];
+    }
     
     for (int i = 0; i< scrollLimite; i+=scrollUnit) {
         ISView* view = [self viewForIndex:i/scrollUnit];
         CGRect r = view.frame;
-        r = CGRectMake(i, 0, viewWidth, viewHeight);
+        r = CGRectMake(scrollDistance+i, 0, viewWidth, viewHeight);
         view.frame = r;
         [self.viewArray addObject:view];
         [self addSubview:view];
@@ -41,6 +47,9 @@
 -(void) horizontalScroll
 {
     CGPoint currentOffset = [self contentOffset];
+    if (tooShortContent) {
+        return;
+    }
     CGFloat distanceX = 0;
     if ((currentOffset.x-scrollDistance) > viewWidth || (currentOffset.x-scrollDistance) < -viewWidth) {
         if (currentOffset.x-scrollDistance > viewWidth) {

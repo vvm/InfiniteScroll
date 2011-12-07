@@ -66,7 +66,11 @@
 
 -(NSInteger)numberOfSubViews:(ISScrollView *)s
 {
-    return 20;
+    if (s.tag == 11)
+        return 2;
+    if (s.tag == 22)
+        return 3;
+    return 0;
 }
 
 @end

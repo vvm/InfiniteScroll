@@ -14,6 +14,7 @@
 
 @interface ISScrollView : UIScrollView
 {
+    BOOL tooShortContent;
     CGFloat scrollDistance;                 // 初始偏移,方便两个方向滚动
     NSInteger numberOfSubViews;
     CGFloat viewWidth;

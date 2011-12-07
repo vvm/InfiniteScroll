@@ -80,6 +80,7 @@
     self.showsVerticalScrollIndicator = NO;
     self.showsHorizontalScrollIndicator = NO;
     numberOfSubViews = [delegate numberOfSubViews:self];
+    tooShortContent = NO;
 }
 
 // 根据标识查找可重用的视图
