@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ISVScrollView.h"
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController<ISScrollViewDelegate,UIScrollViewDelegate>
+{
+    IBOutlet ISVScrollView* myScrollView;
+}
 @end

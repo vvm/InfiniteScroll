@@ -22,33 +22,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-}
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
+    [myScrollView setWidth:60 andHeight:60];
+    myScrollView.delegate = self;
+    [myScrollView setContentSize:CGSizeMake(60, 500)];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -57,4 +34,32 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+
+-(ISView *)viewForIndex:(NSInteger)index
+{//60*300
+    static NSString* indentifier = @"cell";
+    ISView* view = [myScrollView dequeueReusableCellWithIdentifier:indentifier];
+    UILabel* label = nil;
+    if (view == nil) {
+        view = [[ISView alloc] initWithFrame:CGRectMake(0, 0, 60, 60) andIndentifier:indentifier];
+        view.backgroundColor = [UIColor blueColor];
+        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 40)] autorelease];
+        label.tag = 119;
+        [view addSubview:label];
+        
+        UIView* lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 59, 60, 1)];
+        lineView.backgroundColor = [UIColor greenColor];
+        [view addSubview:lineView];
+    }
+    if (label == nil) 
+        label = (UILabel*)[view viewWithTag:119];
+    label.text = [NSString stringWithFormat:@"%d",index];
+    return view;
+}
+
+
+-(NSInteger)numberOfSubViews
+{
+    return 20;
+}
 @end
