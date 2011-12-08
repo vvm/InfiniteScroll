@@ -133,6 +133,7 @@
     if (tooShortContent) {
         [self setContentSize:CGSizeMake(numberOfSubViews*viewWidth + self.frame.size.width,viewHeight)];
     }
+    [self setNeedsLayout];
 }
 
 -(BOOL) pointShouldFitRect:(CGPoint)p withRect:(CGRect)r

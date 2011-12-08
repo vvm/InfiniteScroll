@@ -15,4 +15,6 @@
     IBOutlet ISVScrollView* myScrollView;
     IBOutlet ISHScrollView* myHScrollView;
 }
+- (IBAction)changePick:(id)sender;
+- (IBAction)reload:(id)sender;
 @end

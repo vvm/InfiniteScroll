@@ -5,7 +5,7 @@
 //  Created by  on 11-12-6.
 //  Copyright (c) 2011年 DremTop. All rights reserved.
 //
-
+int numberOne = 3;
 #import "ViewController.h"
 
 @implementation ViewController
@@ -26,7 +26,7 @@
     [myScrollView setWidth:60 andHeight:60];
     myScrollView.isdelegate = self;
     [myScrollView setContentSize:CGSizeMake(60, 500)];
-    [myScrollView setPickRect:CGRectZero andDefaultIndex:0];
+    [myScrollView setPickRect:CGRectZero andDefaultIndex:4];
     
     
     
@@ -69,10 +69,17 @@
 -(NSInteger)numberOfSubViews:(ISScrollView *)s
 {
     if (s.tag == 11)
-        return 3;
+        return numberOne;
     if (s.tag == 22)
         return 33;
     return 0;
 }
 
+- (IBAction)changePick:(id)sender {
+}
+
+- (IBAction)reload:(id)sender {
+    numberOne = 22;
+    [myScrollView reloadData];
+}
 @end

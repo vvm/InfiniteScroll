@@ -50,6 +50,8 @@ typedef enum
 
 -(void) selectIndex:(NSInteger)index;
 -(BOOL) pointShouldFitRect:(CGPoint)p withRect:(CGRect)r;
+
+-(void) reloadData;
 @end
 
 

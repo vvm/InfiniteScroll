@@ -134,10 +134,16 @@
 {
     CGRect r = CGRectUnion(self.bounds, rect);
     pickRect = r;
-    if (index < numberOfSubViews)
+    if (index <0)
+        selectIndex = 0;
+    
+    else if (index < numberOfSubViews)
         selectIndex = index;
+    else
+        selectIndex = numberOfSubViews-1;
 }
 
+// 调整视图使之有个选项
 -(void)visibleRect{};
 
 -(BOOL) pointShouldFitRect:(CGPoint)p withRect:(CGRect)r{return NO;}
@@ -162,6 +168,22 @@
 -(void) selectIndex:(NSInteger)index
 {
     
+}
+
+
+// 重载视图
+-(void) reloadData
+{
+    for (ISView *view in viewArray) {
+        NSMutableArray * array = [viewDictionary objectForKey:view.indentifier];
+        if (array != nil)
+            [array addObject:view];
+        [view removeFromSuperview];
+    }
+    [self.viewArray removeAllObjects];
+    numberOfSubViews = [isdelegate numberOfSubViews:self];
+    [self firstlayoutToShow];
+    [self setNeedsLayout];
 }
 
 @end
