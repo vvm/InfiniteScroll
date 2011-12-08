@@ -32,6 +32,9 @@
 -(void) firstlayoutToShow
 {
     [super firstlayoutToShow];
+    // 调整滚动区域
+    if (self.contentSize.height/self.frame.size.height <3) 
+        self.contentSize = CGSizeMake(self.contentSize.width,self.frame.size.height*3) ;
     // 内部视图太短,比如说只有1个内部视图之类
     if (numberOfSubViews*viewHeight < self.frame.size.height)
         tooShortContent = YES;
@@ -117,10 +120,9 @@
 // 滚动就相应调整
 -(void)layoutSubviews
 {
-    static BOOL firstTime = YES;
-    if (firstTime) {
+    if (layoutFirst) {
         [self firstlayoutToShow];
-        firstTime = !firstTime;
+        layoutFirst = !layoutFirst;
     }
     [super layoutSubviews];
     if (!tooShortContent) 
@@ -134,10 +136,10 @@
     // rect为0时默认设置在中间
     if (CGRectEqualToRect(rect, CGRectZero))
         pickRect = CGRectMake(0, (self.frame.size.height-viewHeight )/2, viewWidth, viewHeight);
-    // 如果内容区域过小,重置滚动区域
-    if (tooShortContent) {
-        [self setContentSize:CGSizeMake(viewWidth, numberOfSubViews*viewHeight + self.frame.size.height)];
-    }
+//    // 如果内容区域过小,重置滚动区域
+//    if (tooShortContent) {
+//        [self setContentSize:CGSizeMake(viewWidth, numberOfSubViews*viewHeight + self.frame.size.height)];
+//    }
     [self setNeedsLayout];
 }
 

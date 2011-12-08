@@ -21,6 +21,7 @@ typedef enum
 
 @interface ISScrollView : UIScrollView<UIScrollViewDelegate>
 {
+    BOOL layoutFirst;
     SType sType;
     BOOL tooShortContent;
     CGFloat scrollDistance;                 // 初始偏移,方便两个方向滚动

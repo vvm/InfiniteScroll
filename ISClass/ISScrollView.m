@@ -16,6 +16,7 @@
 
 -(void)setIsdelegate:(id<ISScrollViewDelegate>)aisdelegate
 {
+    layoutFirst = YES;
     isdelegate = aisdelegate;
     numberOfSubViews = [isdelegate numberOfSubViews:self];
 }

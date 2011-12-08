@@ -11,6 +11,8 @@
 		D468A87B148F1614000A4362 /* ISScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D468A875148F1614000A4362 /* ISScrollView.m */; };
 		D468A87C148F1614000A4362 /* ISView.m in Sources */ = {isa = PBXBuildFile; fileRef = D468A877148F1614000A4362 /* ISView.m */; };
 		D468A87D148F1614000A4362 /* ISVScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D468A879148F1614000A4362 /* ISVScrollView.m */; };
+		D4BBD07814905F2800903F82 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBD07714905F2800903F82 /* ImageViewController.m */; };
+		D4BBD07C14905F3B00903F82 /* DatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BBD07B14905F3B00903F82 /* DatePickerController.m */; };
 		D4DC0D6A148E044E0053E973 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D69148E044E0053E973 /* UIKit.framework */; };
 		D4DC0D6C148E044E0053E973 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D6B148E044E0053E973 /* Foundation.framework */; };
 		D4DC0D6E148E044E0053E973 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DC0D6D148E044E0053E973 /* CoreGraphics.framework */; };
@@ -30,6 +32,10 @@
 		D468A877148F1614000A4362 /* ISView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISView.m; path = ISClass/ISView.m; sourceTree = "<group>"; };
 		D468A878148F1614000A4362 /* ISVScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISVScrollView.h; path = ISClass/ISVScrollView.h; sourceTree = "<group>"; };
 		D468A879148F1614000A4362 /* ISVScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISVScrollView.m; path = ISClass/ISVScrollView.m; sourceTree = "<group>"; };
+		D4BBD07614905F2800903F82 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		D4BBD07714905F2800903F82 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		D4BBD07A14905F3B00903F82 /* DatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerController.h; sourceTree = "<group>"; };
+		D4BBD07B14905F3B00903F82 /* DatePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerController.m; sourceTree = "<group>"; };
 		D4DC0D65148E044E0053E973 /* InfiniteScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DC0D69148E044E0053E973 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D4DC0D6B148E044E0053E973 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -95,6 +101,10 @@
 				D4DC0D7B148E044E0053E973 /* MainStoryboard.storyboard */,
 				D4DC0D7E148E044E0053E973 /* ViewController.h */,
 				D4DC0D7F148E044E0053E973 /* ViewController.m */,
+				D4BBD07614905F2800903F82 /* ImageViewController.h */,
+				D4BBD07714905F2800903F82 /* ImageViewController.m */,
+				D4BBD07A14905F3B00903F82 /* DatePickerController.h */,
+				D4BBD07B14905F3B00903F82 /* DatePickerController.m */,
 				D4DC0D70148E044E0053E973 /* Supporting Files */,
 			);
 			path = InfiniteScroll;
@@ -196,6 +206,8 @@
 				D468A87B148F1614000A4362 /* ISScrollView.m in Sources */,
 				D468A87C148F1614000A4362 /* ISView.m in Sources */,
 				D468A87D148F1614000A4362 /* ISVScrollView.m in Sources */,
+				D4BBD07814905F2800903F82 /* ImageViewController.m in Sources */,
+				D4BBD07C14905F3B00903F82 /* DatePickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

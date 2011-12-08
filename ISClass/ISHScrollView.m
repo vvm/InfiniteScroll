@@ -32,6 +32,9 @@
 -(void) firstlayoutToShow
 {    
     [super firstlayoutToShow];
+    if (self.contentSize.width/self.frame.size.width <3) {
+        self.contentSize = CGSizeMake(self.frame.size.width*3, self.contentSize.height) ;
+    }
     // 把内容放在中间,这样就方便滚动不会超出范围了
     if (numberOfSubViews*viewWidth < self.frame.size.width)
         tooShortContent = YES;
@@ -112,10 +115,9 @@
 // 滚动就相应调整
 -(void)layoutSubviews
 {
-    static BOOL firstTime = YES;
-    if (firstTime) {
+    if (layoutFirst) {
         [self firstlayoutToShow];
-        firstTime = !firstTime;
+        layoutFirst = !layoutFirst;
     }
     [super layoutSubviews];
     if (!tooShortContent)
@@ -129,10 +131,10 @@
     // 默认在中间
     if (CGRectEqualToRect(rect, CGRectZero))
         pickRect = CGRectMake((self.frame.size.width-viewWidth )/2, 0, viewWidth, viewHeight);
-    // 如果内容区域过小,重置滚动区域
-    if (tooShortContent) {
-        [self setContentSize:CGSizeMake(numberOfSubViews*viewWidth + self.frame.size.width,viewHeight)];
-    }
+//    // 如果内容区域过小,重置滚动区域
+//    if (tooShortContent) {
+//        [self setContentSize:CGSizeMake(numberOfSubViews*viewWidth + self.frame.size.width,viewHeight)];
+//    }
     [self setNeedsLayout];
 }
 
