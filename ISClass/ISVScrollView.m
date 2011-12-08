@@ -153,6 +153,7 @@
 
 -(void) visibleRect
 {
+    NSInteger oldSel = selectIndex;
     CGPoint currentOffset = [self contentOffset];
     CGPoint centerPoint = CGPointMake(0, 0);
     for (ISView* view in viewArray) {
@@ -163,6 +164,8 @@
             currentOffset.y += diffY;
             [self setContentOffset:currentOffset animated:YES];
             selectIndex = [viewArray indexOfObject:view];
+            if (oldSel != selectIndex)
+                [isdelegate scrollView:self ChangeSelectedFrom:oldSel to:selectIndex];
             return;
         }
     }
@@ -176,10 +179,13 @@
         [self setContentOffset:currentOffset animated:YES];
         selectIndex = [viewArray count]-1;
     }
+    if (oldSel != selectIndex)
+        [isdelegate scrollView:self ChangeSelectedFrom:oldSel to:selectIndex];
 }
 
 -(void)selectIndex:(NSInteger)index
 {
+    NSInteger oldSel = selectIndex;
     if (CGRectEqualToRect(pickRect, CGRectZero) || index >= numberOfSubViews) {
         return;
     }
@@ -194,5 +200,7 @@
         [self setContentOffset:currentOffset animated:YES];
     }
     selectIndex = index;
+    if (oldSel != selectIndex)
+        [isdelegate scrollView:self ChangeSelectedFrom:oldSel to:selectIndex];
 }
 @end

@@ -36,13 +36,28 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSChineseCalendar];
+    [calendar setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"CN"] autorelease]];
+    dateComponents = [[calendar components:(NSYearCalendarUnit|NSDayCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]] retain];
+
+    
+    yearScroll.isdelegate = self;
+    [yearScroll setWidth:150 andHeight:50];
+    [yearScroll setPickRect:CGRectZero andDefaultIndex:dateComponents.year];
+    moonScroll.isdelegate = self;
+    [moonScroll setWidth:80 andHeight:50];
+    [moonScroll setPickRect:CGRectZero andDefaultIndex:dateComponents.month];
+    dayScroll.isdelegate = self;
+    [dayScroll setWidth:80 andHeight:50];
+    [dayScroll setPickRect:CGRectZero andDefaultIndex:dateComponents.day];
+    
 }
-*/
+
 
 - (void)viewDidUnload
 {
@@ -55,6 +70,70 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(NSInteger)numberOfSubViews:(ISScrollView *)s
+{
+    NSRange r = NSMakeRange(0, 0);
+    if (s.tag == 1) {
+        r = [calendar maximumRangeOfUnit:NSYearCalendarUnit];
+    }
+    else if (s.tag == 2)
+    {
+        NSDate* date = [calendar dateFromComponents:dateComponents];
+        r = [calendar rangeOfUnit:NSMonthCalendarUnit inUnit:NSYearCalendarUnit forDate:date];
+    }
+    else
+    {
+        NSDate* date = [calendar dateFromComponents:dateComponents];
+        r = [calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:date];
+    }
+    return r.length;
+}
+
+-(ISView *)viewForScroll:(ISScrollView *)s AtIndex:(NSInteger)index
+{
+    
+    static NSString* identifier = @"calendar";
+    ISView* view = [s dequeueReusableCellWithIdentifier:identifier];
+    UILabel* label = nil;
+    if (view == nil) {
+        view = [[ISView alloc] initWithFrame:s.bounds andIndentifier:identifier];
+        label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 50)] autorelease];
+        label.tag = 120;
+        [view addSubview:label];
+    }
+    if (label == nil)
+        label = (UILabel*)[view viewWithTag:120];
+    if (s.tag == 1) {
+        label.text = [NSString stringWithFormat:@"%d",index+1];
+    }
+    else if (s.tag == 2) {
+        label.text = [NSString stringWithFormat:@"%d月",index+1];
+    }
+    else
+    {
+        label.text = [NSString stringWithFormat:@"%d",index+1];
+    }
+    return view;
+}
+
+-(void) scrollView:(ISScrollView*)s ChangeSelectedFrom:(NSInteger)oldSel to:(NSInteger)sel
+{
+    if (s.tag == 1) {
+        [dateComponents setYear:sel];
+        [moonScroll reloadData];
+        [dayScroll reloadData];
+    }
+    else if (s.tag == 2)
+    {
+        [dateComponents setMonth:sel];
+        [dayScroll reloadData];
+    }
+    else if (s.tag == 3)
+    {
+        [dateComponents setDay:sel];
+    }
 }
 
 @end

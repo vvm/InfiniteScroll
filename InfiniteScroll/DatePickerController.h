@@ -15,6 +15,9 @@
     IBOutlet ISVScrollView* moonScroll;
     IBOutlet ISVScrollView* dayScroll;
     IBOutlet UILabel* pickLabel;
+    
+    NSCalendar* calendar;
+    NSDateComponents *dateComponents;
 }
 
 @end
