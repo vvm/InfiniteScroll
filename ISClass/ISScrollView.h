@@ -10,10 +10,18 @@
 #import "ISView.h"
 
 
+typedef enum
+{
+    vScroll = 0,
+    hScroll,
+    aScroll
+}SType;
+
 @protocol ISScrollViewDelegate;
 
 @interface ISScrollView : UIScrollView<UIScrollViewDelegate>
 {
+    SType sType;
     BOOL tooShortContent;
     CGFloat scrollDistance;                 // 初始偏移,方便两个方向滚动
     NSInteger numberOfSubViews;
@@ -41,6 +49,7 @@
 -(void) visibleRect;
 
 -(void) selectIndex:(NSInteger)index;
+-(BOOL) pointShouldFitRect:(CGPoint)p withRect:(CGRect)r;
 @end
 
 

@@ -140,6 +140,8 @@
 
 -(void)visibleRect{};
 
+-(BOOL) pointShouldFitRect:(CGPoint)p withRect:(CGRect)r{return NO;}
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (!decelerate && !CGRectEqualToRect(pickRect, CGRectZero)) {

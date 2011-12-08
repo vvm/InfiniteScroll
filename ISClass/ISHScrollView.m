@@ -135,6 +135,14 @@
     }
 }
 
+-(BOOL) pointShouldFitRect:(CGPoint)p withRect:(CGRect)r
+{
+    CGFloat diffX = p.x - (r.origin.x + r.size.width/2);
+    if (fabs(diffX) < viewWidth/2) 
+        return YES;
+    return NO;
+}
+
 -(void) visibleRect
 {
     CGPoint currentOffset = [self contentOffset];
@@ -142,7 +150,7 @@
     for (ISView* view in viewArray) {
         CGRect r = view.frame;
         centerPoint = CGPointMake(r.origin.x -currentOffset.x + viewWidth/2,viewHeight/2 );
-        if (CGRectContainsPoint(pickRect, centerPoint)) {
+        if ([self pointShouldFitRect:centerPoint withRect:pickRect]) {
             CGFloat diffX = centerPoint.x - (pickRect.origin.x+pickRect.size.width/2);
             currentOffset.x += diffX;
             [self setContentOffset:currentOffset animated:YES];
