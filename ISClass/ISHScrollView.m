@@ -60,6 +60,7 @@
     if (!tooShortContent) {
         [self.viewArray addObject:headView];
         [self addSubview:headView];
+        selectIndex++;
     }
     
     for (int i = firstIndex; (i-firstIndex)*scrollUnit< scrollLimite; i++) {

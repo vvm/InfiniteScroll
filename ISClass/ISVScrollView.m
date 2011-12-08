@@ -62,6 +62,7 @@
     if (!tooShortContent) {
         [self.viewArray addObject:headView];
         [self addSubview:headView];
+        selectIndex++;
     }
     
     

@@ -194,6 +194,7 @@
         [isdelegate scrollView:self ChangeSelectedFrom:oldPath to:path];
     }
     self.oldPath = path;
+    NSLog(@"sel:%d",selectIndex);
     NSLog(@"path:%d",path.row);
 }
 
