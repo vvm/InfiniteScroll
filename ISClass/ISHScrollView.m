@@ -9,6 +9,25 @@
 #import "ISHScrollView.h"
 
 @implementation ISHScrollView
+
+// 根据要选中的位置设置第一个元素及偏移
+-(int) positionOfSelect:(CGFloat*) dis
+{
+    *dis = 0;
+    if (tooShortContent)
+        return 0;
+    CGFloat centerX = viewWidth/2;
+    CGFloat pickCenterX = pickRect.origin.x + pickRect.size.width/2;
+    for (int i=0; i<numberOfSubViews; i++) {
+        if (fabs(centerX - pickCenterX)<= viewWidth/2) {
+            *dis = centerX-pickCenterX;
+            return (selectIndex - i);
+        }
+        centerX += viewWidth;
+    }
+    return 0;
+}
+
 // 首次显示时在最前面多显示一个视图(视图与最后一个相同)  
 -(void) firstlayoutToShow
 {    
@@ -19,9 +38,14 @@
     scrollDistance = (self.contentSize.width - self.frame.size.width )/2;
     if (tooShortContent)
         scrollDistance = (self.contentSize.width - (numberOfSubViews*viewWidth) )/2;
-    self.contentOffset = CGPointMake(scrollDistance, 0);
+//    self.contentOffset = CGPointMake(scrollDistance, 0);
     
-    ISView* headView = [self viewForIndex:numberOfSubViews-1];
+    CGFloat* dis = (CGFloat*)malloc(sizeof(CGFloat));
+    int firstIndex = [self positionOfSelect:dis];
+    self.contentOffset = CGPointMake(scrollDistance + *dis, 0);
+    free(dis);
+    
+    ISView* headView = [self viewForIndex:firstIndex-1];
     CGFloat scrollLimite = 0;
     CGFloat scrollUnit = 0;
 
@@ -34,15 +58,15 @@
         [self addSubview:headView];
     }
     
-    for (int i = 0; i< scrollLimite; i+=scrollUnit) {
-        ISView* view = [self viewForIndex:i/scrollUnit];
+    for (int i = firstIndex; (i-firstIndex)*scrollUnit< scrollLimite; i++) {
+        ISView* view = [self viewForIndex:i];
         CGRect r = view.frame;
-        r = CGRectMake(scrollDistance+i, 0, viewWidth, viewHeight);
+        r = CGRectMake(scrollDistance+(i-firstIndex)*scrollUnit, 0, viewWidth, viewHeight);
         view.frame = r;
         [self.viewArray addObject:view];
         [self addSubview:view];
     }
-    [self selectIndex:0];
+    [self selectIndex:selectIndex];
 }
 
 -(void) horizontalScroll
@@ -99,13 +123,12 @@
 }
 
 // 选择框相关
--(void)setPickRect:(CGRect)rect
+-(void)setPickRect:(CGRect)rect andDefaultIndex:(NSInteger)index
 {
+    [super setPickRect:rect andDefaultIndex:index];
     // 默认在中间
     if (CGRectEqualToRect(rect, CGRectZero))
         pickRect = CGRectMake((self.frame.size.width-viewWidth )/2, 0, viewWidth, viewHeight);
-    else
-        [super setPickRect:rect];
     // 如果内容区域过小,重置滚动区域
     if (tooShortContent) {
         [self setContentSize:CGSizeMake(numberOfSubViews*viewWidth + self.frame.size.width,viewHeight)];
@@ -123,6 +146,7 @@
             CGFloat diffX = centerPoint.x - (pickRect.origin.x+pickRect.size.width/2);
             currentOffset.x += diffX;
             [self setContentOffset:currentOffset animated:YES];
+            selectIndex = [viewArray indexOfObject:view];
             return;
         }
     }
@@ -134,6 +158,7 @@
         CGFloat diffX = centerPoint.x - (pickRect.origin.x+pickRect.size.width/2);
         currentOffset.x += diffX;
         [self setContentOffset:currentOffset animated:YES];
+        selectIndex = [viewArray count]-1;
     }
 }
 
@@ -145,12 +170,13 @@
     if (tooShortContent) {
         CGPoint currentOffset = [self contentOffset];
         CGPoint centerPoint = CGPointMake(0, 0);
-        ISView* view = [viewArray objectAtIndex:0];
+        ISView* view = [viewArray objectAtIndex:index];
         CGRect r = view.frame;
         centerPoint = CGPointMake(r.origin.x -currentOffset.x + viewWidth/2,viewHeight/2);
         CGFloat diffX = centerPoint.x - (pickRect.origin.x+pickRect.size.width/2);
         currentOffset.x += diffX;
         [self setContentOffset:currentOffset animated:YES];
     }
+    selectIndex = index;
 }
 @end

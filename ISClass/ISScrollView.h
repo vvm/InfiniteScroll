@@ -24,6 +24,7 @@
     id<ISScrollViewDelegate> isdelegate;
     
     CGRect pickRect;                        // 选择框
+    NSInteger selectIndex;                  // 选择的索引
 }
 @property(nonatomic,retain) NSMutableDictionary* viewDictionary;
 @property(nonatomic,retain) NSMutableArray* viewArray;
@@ -31,7 +32,7 @@
 
 -(id)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
 -(void)setWidth:(CGFloat)width andHeight:(CGFloat)height;
--(void)setPickRect:(CGRect)rect;
+-(void)setPickRect:(CGRect)rect andDefaultIndex:(NSInteger)index;
 
 -(ISView*) dequeueReusableCellWithIdentifier:(NSString*)identifier; // 从重用中查找
 -(ISView*) viewForIndex:(NSInteger)index;   // 从代理中得到

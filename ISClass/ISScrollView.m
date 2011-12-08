@@ -14,9 +14,15 @@
 @synthesize isdelegate;
 
 
+-(void)setIsdelegate:(id<ISScrollViewDelegate>)aisdelegate
+{
+    isdelegate = aisdelegate;
+    numberOfSubViews = [isdelegate numberOfSubViews:self];
+}
 // nib 加载
 -(void)awakeFromNib
 {
+    selectIndex = 0;
     self.viewArray = [[NSMutableArray alloc] init];
     self.viewDictionary = [[NSMutableDictionary alloc] init];
 }
@@ -26,6 +32,7 @@
 {
     self = [super init];
     if (self) {
+        selectIndex = 0;
         self.viewArray = [[NSMutableArray alloc] init];
         self.viewDictionary = [[NSMutableDictionary alloc] init];
     }
@@ -68,6 +75,7 @@
     if (numberOfSubViews < 1) {
         return nil;
     }
+    index += numberOfSubViews;
     // 实际的索引位置
     NSInteger realIndex = index % numberOfSubViews;
     ISView* view = [[isdelegate viewForScroll:self AtIndex:realIndex] autorelease];
@@ -81,7 +89,6 @@
     self.delegate = self;
     self.showsVerticalScrollIndicator = NO;
     self.showsHorizontalScrollIndicator = NO;
-    numberOfSubViews = [isdelegate numberOfSubViews:self];
     tooShortContent = NO;
 }
 
@@ -123,10 +130,12 @@
     return;
 }
 
--(void)setPickRect:(CGRect)rect
+-(void)setPickRect:(CGRect)rect andDefaultIndex:(NSInteger)index
 {
     CGRect r = CGRectUnion(self.bounds, rect);
     pickRect = r;
+    if (index < numberOfSubViews)
+        selectIndex = index;
 }
 
 -(void)visibleRect{};

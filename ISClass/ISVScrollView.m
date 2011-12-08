@@ -10,7 +10,25 @@
 
 @implementation ISVScrollView
 
-// 首次显示时在最前面多显示一个视图(视图与最后一个相同)
+// 根据要选中的位置设置第一个元素及偏移
+-(int) positionOfSelect:(CGFloat*) dis
+{
+    *dis = 0;
+    if (tooShortContent)
+        return 0;
+    CGFloat centerY = viewHeight/2;
+    CGFloat pickCenterY = pickRect.origin.y + pickRect.size.height/2;
+    for (int i=0; i<numberOfSubViews; i++) {
+        if ((centerY - pickCenterY)<= viewHeight/2) {
+            *dis = centerY-pickCenterY;
+            return (selectIndex - i);
+        }
+        centerY += viewHeight;
+    }
+    return 0;
+}
+
+// 首次显示时在最前面多显示一个视图(视图与最后一个相同) shi终往下拉,所以嘴上面的边重叠或者最下面的边在区域内部
 -(void) firstlayoutToShow
 {
     [super firstlayoutToShow];
@@ -21,10 +39,14 @@
     scrollDistance = (self.contentSize.height - self.frame.size.height )/2;
     if (tooShortContent)
         scrollDistance = (self.contentSize.height - (numberOfSubViews*viewHeight) )/2;
-    self.contentOffset = CGPointMake(0, scrollDistance);
     
     
-    ISView* headView = [self viewForIndex:numberOfSubViews-1];
+    CGFloat* dis = (CGFloat*)malloc(sizeof(CGFloat));
+    int firstIndex = [self positionOfSelect:dis];
+    self.contentOffset = CGPointMake(0, scrollDistance + *dis);
+    free(dis);
+    
+    ISView* headView = [self viewForIndex:firstIndex-1];
     CGFloat scrollLimite = 0;
     CGFloat scrollUnit = 0;
     
@@ -38,15 +60,15 @@
     }
     
     
-    for (int i = 0; i< scrollLimite; i+=scrollUnit) {
-        ISView* view = [self viewForIndex:i/scrollUnit];
+    for (int i = firstIndex; (i-firstIndex)*scrollUnit< scrollLimite; i++) {
+        ISView* view = [self viewForIndex:i];
         CGRect r = view.frame;
-        r = CGRectMake(0, scrollDistance+i, viewWidth, viewHeight);
+        r = CGRectMake(0, scrollDistance+i*scrollUnit, viewWidth, viewHeight);
         view.frame = r;
         [self.viewArray addObject:view];
         [self addSubview:view];
     }
-    [self selectIndex:0];
+    [self selectIndex:selectIndex];
 }
 
 // 纵向滚动
@@ -106,13 +128,12 @@
 }
 
 // 选择框相关
--(void)setPickRect:(CGRect)rect
+-(void)setPickRect:(CGRect)rect andDefaultIndex:(NSInteger)index
 {
+    [super setPickRect:rect andDefaultIndex:index];
     // rect为0时默认设置在中间
     if (CGRectEqualToRect(rect, CGRectZero))
         pickRect = CGRectMake(0, (self.frame.size.height-viewHeight )/2, viewWidth, viewHeight);
-    else
-        [super setPickRect:rect];
     // 如果内容区域过小,重置滚动区域
     if (tooShortContent) {
         [self setContentSize:CGSizeMake(viewWidth, numberOfSubViews*viewHeight + self.frame.size.height)];
@@ -130,6 +151,7 @@
             CGFloat diffY = centerPoint.y - (pickRect.origin.y+pickRect.size.height/2);
             currentOffset.y += diffY;
             [self setContentOffset:currentOffset animated:YES];
+            selectIndex = [viewArray indexOfObject:view];
             return;
         }
     }
@@ -141,6 +163,7 @@
         CGFloat diffY = centerPoint.y - (pickRect.origin.y+pickRect.size.height/2);
         currentOffset.y += diffY;
         [self setContentOffset:currentOffset animated:YES];
+        selectIndex = [viewArray count]-1;
     }
 }
 
@@ -159,5 +182,6 @@
         currentOffset.y += diffY;
         [self setContentOffset:currentOffset animated:YES];
     }
+    selectIndex = index;
 }
 @end
