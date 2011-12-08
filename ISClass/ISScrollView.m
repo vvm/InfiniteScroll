@@ -12,9 +12,10 @@
 @synthesize viewArray;
 @synthesize viewDictionary;
 @synthesize isdelegate;
+@synthesize oldPath;
 
 
--(void)setIsdelegate:(id<ISScrollViewDelegate>)aisdelegate
+-(void)setIsdelegate:(id<ISScrollViewDelegate,NSObject>)aisdelegate
 {
     layoutFirst = YES;
     isdelegate = aisdelegate;
@@ -112,14 +113,6 @@
     [super layoutSubviews];
 }
 
-
--(void)dealloc
-{
-    [viewDictionary release];
-    [viewArray release];
-    [super dealloc];
-}
-
 // 下面系列是对有选择框时进行选择
 #pragma scroll view delegate
 // 使用自己作代理
@@ -182,9 +175,34 @@
         [view removeFromSuperview];
     }
     [self.viewArray removeAllObjects];
+    selectIndex = oldPath.row;
     numberOfSubViews = [isdelegate numberOfSubViews:self];
-    [self firstlayoutToShow];
+    if (selectIndex >= numberOfSubViews)
+        selectIndex = numberOfSubViews-1;
+    layoutFirst = YES;
     [self setNeedsLayout];
 }
 
+// 改变选择项事件
+-(void) changeto:(NSInteger)t
+{
+    selectIndex = t;
+    ISView* view = [viewArray objectAtIndex:t];
+    NSIndexPath* path = view.indexPath;
+//    [[isdelegate class] instancesRespondToSelector:@selector(scrollView:ChangeSelectedFrom:to:)];
+    if (![path isEqual:oldPath] && [isdelegate respondsToSelector:@selector(scrollView:ChangeSelectedFrom:to:)]) {
+        [isdelegate scrollView:self ChangeSelectedFrom:oldPath to:path];
+    }
+    self.oldPath = path;
+    NSLog(@"path:%d",path.row);
+}
+
+                            
+-(void)dealloc
+{
+    [viewDictionary release];
+    [viewArray release];
+    [oldPath release];
+    [super dealloc];
+}
 @end

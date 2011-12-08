@@ -21,7 +21,9 @@
     for (int i=0; i<numberOfSubViews; i++) {
         if (fabs(centerX - pickCenterX)<= viewWidth/2) {
             *dis = centerX-pickCenterX;
-            return (selectIndex - i);
+            int pos = selectIndex - i;
+            selectIndex = i;
+            return pos;
         }
         centerX += viewWidth;
     }
@@ -41,7 +43,6 @@
     scrollDistance = (self.contentSize.width - self.frame.size.width )/2;
     if (tooShortContent)
         scrollDistance = (self.contentSize.width - (numberOfSubViews*viewWidth) )/2;
-//    self.contentOffset = CGPointMake(scrollDistance, 0);
     
     CGFloat* dis = (CGFloat*)malloc(sizeof(CGFloat));
     int firstIndex = [self positionOfSelect:dis];
@@ -148,7 +149,6 @@
 
 -(void) visibleRect
 {
-    NSInteger oldSel = selectIndex;
     CGPoint currentOffset = [self contentOffset];
     CGPoint centerPoint = CGPointMake(0, 0);
     for (ISView* view in viewArray) {
@@ -158,9 +158,7 @@
             CGFloat diffX = centerPoint.x - (pickRect.origin.x+pickRect.size.width/2);
             currentOffset.x += diffX;
             [self setContentOffset:currentOffset animated:YES];
-            selectIndex = [viewArray indexOfObject:view];
-            if (oldSel != selectIndex)
-                [isdelegate scrollView:self ChangeSelectedFrom:oldSel to:selectIndex];
+            [self changeto:[viewArray indexOfObject:view]];
             return;
         }
     }
@@ -172,15 +170,12 @@
         CGFloat diffX = centerPoint.x - (pickRect.origin.x+pickRect.size.width/2);
         currentOffset.x += diffX;
         [self setContentOffset:currentOffset animated:YES];
-        selectIndex = [viewArray count]-1;
+        [self changeto:[viewArray count]-1];
     }
-    if (oldSel != selectIndex)
-        [isdelegate scrollView:self ChangeSelectedFrom:oldSel to:selectIndex];
 }
 
 -(void)selectIndex:(NSInteger)index
 {
-    NSInteger oldSel = selectIndex;
     if (CGRectEqualToRect(pickRect, CGRectZero) || index >= numberOfSubViews) {
         return;
     }
@@ -194,8 +189,6 @@
         currentOffset.x += diffX;
         [self setContentOffset:currentOffset animated:YES];
     }
-    selectIndex = index;
-    if (oldSel != selectIndex)
-        [isdelegate scrollView:self ChangeSelectedFrom:oldSel to:selectIndex];
+    [self changeto:index];
 }
 @end

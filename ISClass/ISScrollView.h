@@ -21,23 +21,25 @@ typedef enum
 
 @interface ISScrollView : UIScrollView<UIScrollViewDelegate>
 {
-    BOOL layoutFirst;
+    NSIndexPath *oldPath;                   // 签一次选择的项
+    BOOL layoutFirst;                       // 第一次加载
     SType sType;
-    BOOL tooShortContent;
+    BOOL tooShortContent;                   // content不能充满整个frame
     CGFloat scrollDistance;                 // 初始偏移,方便两个方向滚动
     NSInteger numberOfSubViews;
     CGFloat viewWidth;
     CGFloat viewHeight;
     NSMutableDictionary* viewDictionary;    // 重用视图记录表
     NSMutableArray* viewArray;              // 当前所有子view顺序
-    id<ISScrollViewDelegate> isdelegate;
+    id<ISScrollViewDelegate,NSObject> isdelegate;
     
     CGRect pickRect;                        // 选择框
     NSInteger selectIndex;                  // 选择的索引
 }
 @property(nonatomic,retain) NSMutableDictionary* viewDictionary;
 @property(nonatomic,retain) NSMutableArray* viewArray;
-@property(nonatomic,assign) id<ISScrollViewDelegate> isdelegate;
+@property(nonatomic,assign) id<ISScrollViewDelegate,NSObject> isdelegate;
+@property(nonatomic,retain) NSIndexPath *oldPath;
 
 -(id)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
 -(void)setWidth:(CGFloat)width andHeight:(CGFloat)height;
@@ -53,6 +55,7 @@ typedef enum
 -(BOOL) pointShouldFitRect:(CGPoint)p withRect:(CGRect)r;
 
 -(void) reloadData;
+-(void) changeto:(NSInteger)t;
 @end
 
 
@@ -60,5 +63,5 @@ typedef enum
 -(NSInteger) numberOfSubViews:(ISScrollView*)s;          // 子视图个数
 -(ISView*) viewForScroll:(ISScrollView*)s AtIndex:(NSInteger)index;                // 申请子视图
 @optional
--(void) scrollView:(ISScrollView*)s ChangeSelectedFrom:(NSInteger)oldSel to:(NSInteger)sel;
+-(void) scrollView:(ISScrollView*)s ChangeSelectedFrom:(NSIndexPath*)oldSel to:(NSIndexPath*)sel;
 @end

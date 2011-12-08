@@ -48,12 +48,15 @@
     
     yearScroll.isdelegate = self;
     [yearScroll setWidth:150 andHeight:50];
+    [yearScroll setContentSize:CGSizeMake(150, 450)];
     [yearScroll setPickRect:CGRectZero andDefaultIndex:dateComponents.year];
     moonScroll.isdelegate = self;
     [moonScroll setWidth:80 andHeight:50];
+    [moonScroll setContentSize:CGSizeMake(80, 450)];
     [moonScroll setPickRect:CGRectZero andDefaultIndex:dateComponents.month];
     dayScroll.isdelegate = self;
     [dayScroll setWidth:80 andHeight:50];
+    [dayScroll setContentSize:CGSizeMake(80, 450)];
     [dayScroll setPickRect:CGRectZero andDefaultIndex:dateComponents.day];
     
 }
@@ -99,6 +102,7 @@
     UILabel* label = nil;
     if (view == nil) {
         view = [[ISView alloc] initWithFrame:s.bounds andIndentifier:identifier];
+        view.backgroundColor = [UIColor blueColor];
         label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 50)] autorelease];
         label.tag = 120;
         [view addSubview:label];
@@ -118,21 +122,22 @@
     return view;
 }
 
--(void) scrollView:(ISScrollView*)s ChangeSelectedFrom:(NSInteger)oldSel to:(NSInteger)sel
+-(void) scrollView:(ISScrollView*)s ChangeSelectedFrom:(NSIndexPath*)oldSel to:(NSIndexPath*)sel
 {
     if (s.tag == 1) {
-        [dateComponents setYear:sel];
+        [dateComponents setYear:sel.row];
         [moonScroll reloadData];
         [dayScroll reloadData];
     }
     else if (s.tag == 2)
     {
-        [dateComponents setMonth:sel];
+        [dateComponents setMonth:sel.row];
         [dayScroll reloadData];
     }
     else if (s.tag == 3)
     {
-        [dateComponents setDay:sel];
+        [dateComponents setDay:sel.row];
+        NSLog(@"day se:%d",sel.row);
     }
 }
 
