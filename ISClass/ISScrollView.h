@@ -27,14 +27,16 @@ typedef enum
     BOOL tooShortContent;                   // content不能充满整个frame
     CGFloat scrollDistance;                 // 初始偏移,方便两个方向滚动
     NSInteger numberOfSubViews;
+    
     CGFloat viewWidth;
     CGFloat viewHeight;
+    
     NSMutableDictionary* viewDictionary;    // 重用视图记录表
     NSMutableArray* viewArray;              // 当前所有子view顺序
     id<ISScrollViewDelegate,NSObject> isdelegate;
     
     CGRect pickRect;                        // 选择框
-    NSInteger selectIndex;                  // 选择的索引
+    NSInteger selectIndex;                  // 选择的索引,所选view在viewArray中的位置
 }
 @property(nonatomic,retain) NSMutableDictionary* viewDictionary;
 @property(nonatomic,retain) NSMutableArray* viewArray;
