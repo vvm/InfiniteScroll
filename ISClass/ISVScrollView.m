@@ -35,8 +35,9 @@
 {
     [super firstlayoutToShow];
     // 调整滚动区域
-    if (self.contentSize.height/self.frame.size.height <3) 
-        self.contentSize = CGSizeMake(self.contentSize.width,self.frame.size.height*3) ;
+    CGFloat lestHeight = self.frame.size.height + viewHeight*3;
+    if (self.contentSize.height/self.frame.size.height <lestHeight) 
+        self.contentSize = CGSizeMake(self.contentSize.width,lestHeight) ;
     // 内部视图太短,比如说只有1个内部视图之类
     if (numberOfSubViews*viewHeight < self.frame.size.height)
         tooShortContent = YES;
@@ -123,12 +124,13 @@
 // 滚动就相应调整
 -(void)layoutSubviews
 {
+    // 首次出现或者重载数据时,初始化subviews
     if (layoutFirst) {
         [self firstlayoutToShow];
         layoutFirst = !layoutFirst;
     }
     [super layoutSubviews];
-    if (!tooShortContent) 
+    if (!tooShortContent) // 需要无限滚动,相应改变
         [self verticalScroll];
 }
 
@@ -158,7 +160,7 @@
 {
     CGPoint currentOffset = [self contentOffset];
     CGPoint centerPoint = CGPointMake(0, 0);
-    for (ISView* view in viewArray) {
+    for (ISView* view in viewArray) {   // 找到合适的选择项
         CGRect r = view.frame;
         centerPoint = CGPointMake(viewWidth/2, r.origin.y -currentOffset.y + viewHeight/2);
         if ([self pointShouldFitRect:centerPoint withRect:pickRect]) {
@@ -169,6 +171,7 @@
             return;
         }
     }
+    // 下面是subviews不能充满整个frame情况下需要选择第一个或最后一个
     if (centerPoint.y > pickRect.origin.y) {
         [self selectIndex:0];
     }

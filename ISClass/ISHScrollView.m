@@ -34,8 +34,9 @@
 -(void) firstlayoutToShow
 {    
     [super firstlayoutToShow];
-    if (self.contentSize.width/self.frame.size.width <3) {
-        self.contentSize = CGSizeMake(self.frame.size.width*3, self.contentSize.height) ;
+    CGFloat lestWidth = self.frame.size.width + viewWidth*3;
+    if (self.contentSize.width/self.frame.size.width <lestWidth) {
+        self.contentSize = CGSizeMake(lestWidth, self.contentSize.height) ;
     }
     // 把内容放在中间,这样就方便滚动不会超出范围了
     if (numberOfSubViews*viewWidth < self.frame.size.width)

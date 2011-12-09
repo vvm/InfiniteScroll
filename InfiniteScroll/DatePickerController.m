@@ -45,7 +45,6 @@
     [calendar setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"CN"] autorelease]];
     dateComponents = [[calendar components:(NSYearCalendarUnit|NSDayCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]] retain];
 
-    
     yearScroll.isdelegate = self;
     [yearScroll setWidth:150 andHeight:50];
     [yearScroll setContentSize:CGSizeMake(150, 450)];

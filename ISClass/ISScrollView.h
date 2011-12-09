@@ -65,5 +65,5 @@ typedef enum
 -(NSInteger) numberOfSubViews:(ISScrollView*)s;          // 子视图个数
 -(ISView*) viewForScroll:(ISScrollView*)s AtIndex:(NSInteger)index;                // 申请子视图
 @optional
--(void) scrollView:(ISScrollView*)s ChangeSelectedFrom:(NSIndexPath*)oldSel to:(NSIndexPath*)sel;
+-(void) scrollView:(ISScrollView*)s ChangeSelectedFrom:(NSIndexPath*)oldSel to:(NSIndexPath*)sel;// 选项改变
 @end
