@@ -178,7 +178,7 @@
 
 -(void)selectIndex:(NSInteger)index
 {
-    if (CGRectEqualToRect(pickRect, CGRectZero) || index >= numberOfSubViews) {
+    if (CGRectEqualToRect(pickRect, CGRectZero) || index >= numberOfSubViews || index < 0) {
         return;
     }
     if (tooShortContent) {

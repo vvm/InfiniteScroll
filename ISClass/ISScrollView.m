@@ -41,6 +41,16 @@
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        selectIndex = 0;
+        self.viewArray = [[NSMutableArray alloc] init];
+        self.viewDictionary = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
+
 // 滚动单位的宽和高
 -(id)initWithWidth:(CGFloat)width andHeight:(CGFloat)height
 {
@@ -130,7 +140,6 @@
     pickRect = r;
     if (index <0)
         selectIndex = 0;
-    
     else if (index < numberOfSubViews)
         selectIndex = index;
     else
@@ -186,16 +195,21 @@
 // 改变选择项事件
 -(void) changeto:(NSInteger)t
 {
+    if ([viewArray count] == 0) {
+        return;
+    }
     selectIndex = t;
     ISView* view = [viewArray objectAtIndex:t];
     NSIndexPath* path = view.indexPath;
-//    [[isdelegate class] instancesRespondToSelector:@selector(scrollView:ChangeSelectedFrom:to:)];
     if (![path isEqual:oldPath] && [isdelegate respondsToSelector:@selector(scrollView:ChangeSelectedFrom:to:)]) {
         [isdelegate scrollView:self ChangeSelectedFrom:oldPath to:path];
     }
     self.oldPath = path;
-    NSLog(@"sel:%d",selectIndex);
-    NSLog(@"path:%d",path.row);
+}
+
+-(ISView*)currentSelect
+{
+    return (ISView*)[self.viewArray objectAtIndex:selectIndex];
 }
 
                             

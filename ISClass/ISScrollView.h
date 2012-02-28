@@ -58,6 +58,8 @@ typedef enum
 
 -(void) reloadData;
 -(void) changeto:(NSInteger)t;
+
+-(ISView*)currentSelect;    // 当前选中视图
 @end
 
 
